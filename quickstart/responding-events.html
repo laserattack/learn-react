@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React - Button Click</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.1s;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function MyButton() {
+            function handleClick() {
+                alert('You clicked me!');
+            }
+
+            return (
+                <button onClick={handleClick}>
+                    Click me
+                </button>
+            );
+        }
+
+        function MyApp() {
+            return (
+                <div>
+                    <h1>React Responding Events</h1>
+                    <p>Click the button below:</p>
+                    <MyButton />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MyApp />);
+    </script>
+</body>
+</html>
