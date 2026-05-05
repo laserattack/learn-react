@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React JSX</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- react libs -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- babel for compile JSX into JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
+
+        const element = <Welcome name="Sailor" />;
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(element);
+    </script>
+</body>
+</html>
