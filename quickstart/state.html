@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React - useState Counter</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            margin: 15px;
+            border-radius: 8px;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+        .count {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 20px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function MyButton() {
+            let initialState = 0;
+            // state is a common variable
+            const [currentState, setNewState] = useState(initialState);
+
+            function handleClick() {
+                setNewState(currentState + 1);
+            }
+
+            return (
+                <button onClick={handleClick}>
+                    Clicked {currentState} times
+                </button>
+            );
+        }
+
+        function MyApp() {
+            return (
+                <div>
+                    <h1>useState Example</h1>
+                    <MyButton />
+                    <MyButton />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MyApp />);
+    </script>
+</body>
+</html>
