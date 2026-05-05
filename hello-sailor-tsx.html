@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React + TypeScript + JSX (TSX)</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- react libs -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- TypeScript compiler -->
+    <script src="https://unpkg.com/typescript@5.0.4/lib/typescript.js"></script>
+
+    <script>
+        const tsxCode = `
+            type WelcomeProps {
+                name: string; // typed!!!
+            }
+
+            function Welcome(props: WelcomeProps) {
+                return <h1>Hello, {props.name}</h1>;
+            }
+
+            const element = <Welcome name="Sailor" />;
+
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(element);
+        `;
+
+        // compile tsx into js
+        const jsCode = ts.transpile(tsxCode, {
+            target: ts.ScriptTarget.ES2020,
+            module: ts.ModuleKind.None,
+            jsx: ts.JsxEmit.React
+        });
+
+        // eval js
+        eval(jsCode);
+    </script>
+</body>
+</html>
