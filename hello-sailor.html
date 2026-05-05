@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- react libs -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script>
+        function Welcome(props) {
+            return React.createElement('h1', null, 'Hello, ', props.name);
+        }
+
+        const element = React.createElement(Welcome, { name: 'Sailor' });
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(element);
+    </script>
+</body>
+</html>
