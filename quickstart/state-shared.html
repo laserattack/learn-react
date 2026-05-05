@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React - Lifting State Up</title>
+    <style>
+        body { font-family: system-ui; padding: 20px; text-align: center; }
+        .buttons { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+        button { padding: 15px 30px; font-size: 18px; cursor: pointer; }
+        .count { font-size: 48px; font-weight: bold; margin: 20px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function MyButton({ count, onClick, label }) {
+            return (
+                <button onClick={onClick}>
+                    {label} — Clicked {count} times
+                </button>
+            );
+        }
+
+        function MyApp() {
+            const [count, setCount] = useState(0);
+
+            function handleClick() {
+                setCount(count + 1);
+            }
+
+            return (
+                <div>
+                    <h1>Shared Counter</h1>
+                    <div className="count">Total clicks: {count}</div>
+                    <div className="buttons">
+                        <MyButton
+                            count={count}
+                            onClick={handleClick}
+                            label="Left Button"
+                        />
+                        <MyButton
+                            count={count}
+                            onClick={handleClick}
+                            label="Right Button"
+                        />
+                    </div>
+                    <p>Click any button — both update together!</p>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MyApp />);
+    </script>
+</body>
+</html>
