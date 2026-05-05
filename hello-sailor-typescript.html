@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React + TypeScript</title>
+</head>
+<body>
+    <div id="root"></div>
+   <!-- react libs -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+   <!-- typescript compiler -->
+    <script src="https://unpkg.com/typescript@5.0.4/lib/typescript.js"></script>
+   <script>
+        // TypeScript code
+        const tsCode = `
+            interface WelcomeProps {
+                name: string;
+            }
+           function Welcome(props: WelcomeProps) {
+                return React.createElement('h1', null, 'Hello, ', props.name);
+            }
+           const element = React.createElement(Welcome, { name: 'Sailor' });
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(element);
+        `;
+       // compile TypeScript into JavaScript
+        const jsCode = ts.transpile(tsCode, {
+            target: ts.ScriptTarget.ES2020, // es2020 - js standard
+            module: ts.ModuleKind.None      // no modules in this code
+        });
+       // eval
+        eval(jsCode);
+    </script>
+</body>
+</html>
